@@ -16,7 +16,7 @@ const Projects = () => {
         "Docker",
       ],
       linkRepo: "https://github.com/Yonatanuh/Neo-banco",
-      linkDemo: "https://neo-banco.onrender.com",
+      linkDemo: "https://frontend-xi-ten-80.vercel.app",
     },
     {
       id: 1,
@@ -141,7 +141,7 @@ const Projects = () => {
                   }`}
                 >
                   <span className="mr-2">🚀</span>
-                  Demo
+                  Ver página
                 </motion.a>
               </div>
             </motion.div>
