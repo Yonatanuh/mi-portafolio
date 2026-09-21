@@ -1,154 +1,198 @@
+import { motion } from "framer-motion";
+
 const Skills = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
-    <section className="bg-gray-900 py-20 px-4 relative">
-      <div className="max-w-4xl mx-auto">
+    <section className="bg-[#050510] py-24 px-4 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[120px]"></div>
+      </div>
+
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Título de la sección */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
             Mi{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">
               Tech Stack
             </span>
           </h2>
           <p className="text-gray-400 text-lg">
             Tecnologías con las que construyo soluciones escalables.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid de Habilidades */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {/* Frontend Card */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-blue-500/50 transition-colors duration-300">
-            <h3 className="text-xl font-bold text-blue-400 mb-4 flex items-center gap-2">
-              Frontend
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] group"
+          >
+            <h3 className="text-2xl font-bold text-cyan-400 mb-6 flex items-center gap-3">
+              <span className="p-2 bg-cyan-900/30 rounded-lg">🎨</span> Frontend
             </h3>
             <ul className="flex flex-wrap gap-2">
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                React.js
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Vite
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                JavaScript (ES6+)
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                TypeScript
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Tailwind CSS
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Bootstrap
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                HTML5 / CSS3
-              </li>
+              {[
+                "React.js",
+                "Vite",
+                "JavaScript (ES6+)",
+                "TypeScript",
+                "Tailwind CSS",
+                "Framer Motion",
+                "HTML5 / CSS3",
+              ].map((tech) => (
+                <li
+                  key={tech}
+                  className="bg-black/50 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm group-hover:border-cyan-900/50 transition-colors"
+                >
+                  {tech}
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Backend Card */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-green-500/50 transition-colors duration-300">
-            <h3 className="text-xl font-bold text-green-400 mb-4 flex items-center gap-2">
-              Backend
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] group"
+          >
+            <h3 className="text-2xl font-bold text-green-400 mb-6 flex items-center gap-3">
+              <span className="p-2 bg-green-900/30 rounded-lg">⚙️</span> Backend
             </h3>
             <ul className="flex flex-wrap gap-2">
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                C#
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                .NET / ASP.NET Core
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Node.js
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Express.js
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                REST APIs
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Java
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Python
-              </li>
+              {[
+                "Java 21",
+                "Spring Boot",
+                "C#",
+                ".NET Core",
+                "Node.js",
+                "Express.js",
+                "Python",
+                "REST APIs",
+              ].map((tech) => (
+                <li
+                  key={tech}
+                  className="bg-black/50 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm group-hover:border-green-900/50 transition-colors"
+                >
+                  {tech}
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Bases de Datos Card */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-yellow-500/50 transition-colors duration-300">
-            <h3 className="text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
-              Bases de Datos
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-yellow-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(234,179,8,0.15)] group"
+          >
+            <h3 className="text-2xl font-bold text-yellow-400 mb-6 flex items-center gap-3">
+              <span className="p-2 bg-yellow-900/30 rounded-lg">🗄️</span> Bases
+              de Datos
             </h3>
             <ul className="flex flex-wrap gap-2">
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                SQL Server
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                PostgreSQL
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                MongoDB
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Entity Framework Core
-              </li>
+              {["SQL Server", "PostgreSQL", "MongoDB", "Entity Framework"].map(
+                (tech) => (
+                  <li
+                    key={tech}
+                    className="bg-black/50 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm group-hover:border-yellow-900/50 transition-colors"
+                  >
+                    {tech}
+                  </li>
+                ),
+              )}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Herramientas & Cloud Card */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-purple-500/50 transition-colors duration-300">
-            <h3 className="text-xl font-bold text-purple-400 mb-4 flex items-center gap-2">
-              Herramientas & Otros
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] group"
+          >
+            <h3 className="text-2xl font-bold text-purple-400 mb-6 flex items-center gap-3">
+              <span className="p-2 bg-purple-900/30 rounded-lg">☁️</span>{" "}
+              Herramientas & Cloud
             </h3>
-            <ul className="flex flex-wrap gap-3">
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Git & GitHub
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Microsoft Teams
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                VS Code
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Diseño de interfaz
-              </li>
+            <ul className="flex flex-wrap gap-2">
+              {[
+                "Git & GitHub",
+                "Docker",
+                "Render",
+                "Vercel",
+                "VS Code",
+                "Ciberseguridad",
+              ].map((tech) => (
+                <li
+                  key={tech}
+                  className="bg-black/50 border border-gray-800 text-gray-300 px-3 py-1.5 rounded-lg text-sm font-medium group-hover:border-purple-900/50 transition-colors"
+                >
+                  {tech}
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Habilidades Blandas Card */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 md:col-span-2 hover:border-pink-500/50 transition-colors duration-300">
-            <h3 className="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2">
+          <motion.div
+            variants={itemVariants}
+            whileHover={{ y: -5 }}
+            className="bg-gray-900/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 md:col-span-2 hover:border-pink-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(236,72,153,0.15)] group"
+          >
+            <h3 className="text-2xl font-bold text-pink-400 mb-6 flex items-center gap-3">
+              <span className="p-2 bg-pink-900/30 rounded-lg">🤝</span>{" "}
               Habilidades Blandas
             </h3>
             <ul className="flex flex-wrap gap-3">
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Trabajo en equipo
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Resolución de problemas
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Proactividad
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Innovación
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Comunicación
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Capacidad de análisis
-              </li>
-              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Creatividad
-              </li>
+              {[
+                "Trabajo en equipo",
+                "Resolución de problemas",
+                "Proactividad",
+                "Innovación",
+                "Comunicación asertiva",
+                "Capacidad de análisis",
+                "Adaptabilidad",
+              ].map((tech) => (
+                <li
+                  key={tech}
+                  className="bg-black/50 border border-gray-800 text-gray-300 px-4 py-2 rounded-xl text-sm font-semibold group-hover:border-pink-900/50 transition-colors"
+                >
+                  {tech}
+                </li>
+              ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

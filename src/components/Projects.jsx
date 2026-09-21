@@ -1,5 +1,23 @@
+import { motion } from "framer-motion";
+
 const Projects = () => {
   const misProyectos = [
+    {
+      id: 0,
+      title: "Neo Banco - Fintech",
+      description:
+        "Plataforma completa de banca digital (Neo Banco). Arquitectura full-stack avanzada con autenticación segura, manejo de divisas, transferencias SWIFT, notificaciones automáticas por correo electrónico y diseño altamente interactivo. Desplegada en la nube.",
+      technologies: [
+        "React",
+        "Java Spring Boot",
+        "Python",
+        "MongoDB",
+        "Tailwind CSS",
+        "Docker",
+      ],
+      linkRepo: "https://github.com/Yonatanuh/Neo-banco",
+      linkDemo: "https://neo-banco.onrender.com",
+    },
     {
       id: 1,
       title: "Yonild-Apks-Tv",
@@ -34,30 +52,53 @@ const Projects = () => {
   ];
 
   return (
-    <section id="proyectos" className="bg-gray-800 py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">
+    <section
+      id="proyectos"
+      className="bg-gray-800 py-20 px-4 relative overflow-hidden"
+    >
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4 tracking-tight">
             Mis Proyectos Destacados
           </h2>
-          <p className="text-gray-400 text-lg">
-            Una selección de mis trabajos más recientes y significativos
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Soluciones tecnológicas reales que demuestran mi capacidad para
+            resolver problemas complejos usando arquitecturas modernas.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {misProyectos.map((proyecto) => (
-            <div
+          {misProyectos.map((proyecto, index) => (
+            <motion.div
               key={proyecto.id}
-              className="bg-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 transform hover:-translate-y-2 group flex flex-col h-full"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              whileHover={{ y: -10 }}
+              className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] group flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
                   {proyecto.title}
                 </h3>
-                <span className="bg-green-900/30 text-green-400 text-xs font-bold px-2 py-1 rounded">
-                  Completado
-                </span>
+                {proyecto.id === 0 && (
+                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                    NUEVO
+                  </span>
+                )}
               </div>
 
               <p className="text-gray-400 mb-6 leading-relaxed flex-grow">
@@ -65,35 +106,45 @@ const Projects = () => {
               </p>
 
               <div className="flex flex-wrap gap-2 mb-6">
-                {proyecto.technologies.map((tech, index) => (
+                {proyecto.technologies.map((tech, i) => (
                   <span
-                    key={index}
-                    className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 text-blue-400 text-sm font-semibold px-3 py-1 rounded-full border border-blue-700/30"
+                    key={i}
+                    className="bg-gray-800 text-blue-300 text-sm font-medium px-3 py-1 rounded-full border border-blue-900/50 group-hover:border-blue-500/30 transition-colors"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 border-t border-gray-700 pt-4">
-                <a
+              <div className="flex gap-4 border-t border-gray-700/50 pt-5 mt-auto">
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   href={proyecto.linkRepo}
-                  className="flex items-center text-gray-300 hover:text-white font-medium transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center flex-1 bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors border border-gray-600 hover:border-gray-500"
                 >
                   <span className="mr-2">💻</span>
-                  Ver Código
-                </a>
-                <a
+                  Código
+                </motion.a>
+                <motion.a
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   href={proyecto.linkDemo}
                   target={proyecto.linkDemo !== "#" ? "_blank" : "_self"}
                   rel="noopener noreferrer"
-                  className="flex items-center text-blue-500 hover:text-blue-400 font-medium transition-colors"
+                  className={`flex items-center justify-center flex-1 font-medium py-2 px-4 rounded-lg transition-colors ${
+                    proyecto.linkDemo !== "#"
+                      ? "bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20"
+                      : "bg-gray-800 text-gray-500 cursor-not-allowed"
+                  }`}
                 >
                   <span className="mr-2">🚀</span>
-                  Ver Detalles
-                </a>
+                  Demo
+                </motion.a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
