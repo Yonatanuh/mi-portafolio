@@ -24,10 +24,13 @@ const Skills = () => {
             </h3>
             <ul className="flex flex-wrap gap-2">
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                React
+                React.js
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                JavaScript
+                Vite
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
+                JavaScript (ES6+)
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
                 TypeScript
@@ -36,76 +39,112 @@ const Skills = () => {
                 Tailwind CSS
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
+                Bootstrap
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
                 HTML5 / CSS3
               </li>
             </ul>
           </div>
 
-          {/* Backend MERN Card */}
+          {/* Backend Card */}
           <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-green-500/50 transition-colors duration-300">
             <h3 className="text-xl font-bold text-green-400 mb-4 flex items-center gap-2">
-              Backend (Node)
+              Backend
             </h3>
             <ul className="flex flex-wrap gap-2">
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Node.js
+                C#
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Python
+                .NET / ASP.NET Core
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
+                Node.js
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
                 Express.js
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                MongoDB
+                REST APIs
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                REST APIs
+                Java
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
+                Python
               </li>
             </ul>
           </div>
 
-          {/* Backend Java Card (NUEVO) */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-red-500/50 transition-colors duration-300">
-            <h3 className="text-xl font-bold text-red-400 mb-4 flex items-center gap-2">
-              Ecosistema Java
+          {/* Bases de Datos Card */}
+          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-yellow-500/50 transition-colors duration-300">
+            <h3 className="text-xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
+              Bases de Datos
             </h3>
             <ul className="flex flex-wrap gap-2">
-              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm border border-red-500/30">
-                Java (Core)
+              <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
+                SQL Server
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Spring Boot (Básico)
+                PostgreSQL
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                JDBC
+                MongoDB
               </li>
               <li className="bg-gray-900 text-gray-300 px-3 py-1 rounded-md text-sm">
-                Maven
+                Entity Framework Core
               </li>
             </ul>
           </div>
 
           {/* Herramientas & Cloud Card */}
-          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 md:col-span-2 lg:col-span-3 hover:border-purple-500/50 transition-colors duration-300">
+          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 hover:border-purple-500/50 transition-colors duration-300">
             <h3 className="text-xl font-bold text-purple-400 mb-4 flex items-center gap-2">
-              Infraestructura, DevOps & Herramientas
+              Herramientas & Otros
             </h3>
             <ul className="flex flex-wrap gap-3">
               <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
                 Git & GitHub
               </li>
               <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Vercel
+                Microsoft Teams
               </li>
               <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Cloudinary
+                VS Code
               </li>
               <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                VS Code & Terminal
+                Diseño de interfaz
+              </li>
+            </ul>
+          </div>
+
+          {/* Habilidades Blandas Card */}
+          <div className="bg-gray-800/50 border border-gray-700/50 rounded-2xl p-6 md:col-span-2 hover:border-pink-500/50 transition-colors duration-300">
+            <h3 className="text-xl font-bold text-pink-400 mb-4 flex items-center gap-2">
+              Habilidades Blandas
+            </h3>
+            <ul className="flex flex-wrap gap-3">
+              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
+                Trabajo en equipo
               </li>
               <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
-                Ciberseguridad Básica
+                Resolución de problemas
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
+                Proactividad
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
+                Innovación
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
+                Comunicación
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
+                Capacidad de análisis
+              </li>
+              <li className="bg-gray-900 text-gray-300 px-4 py-2 rounded-lg text-sm font-semibold">
+                Creatividad
               </li>
             </ul>
           </div>
