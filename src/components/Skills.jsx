@@ -18,9 +18,9 @@ const Skills = () => {
 
   return (
     <section className="bg-[#050510] py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[120px]"></div>
+      {/* Background decoration optimizado */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none flex justify-center items-center">
+        <div className="w-[80vw] h-[80vw] bg-[radial-gradient(circle,rgba(6,182,212,0.03)_0%,transparent_60%)] rounded-full"></div>
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10">

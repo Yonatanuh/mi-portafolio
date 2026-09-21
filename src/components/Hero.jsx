@@ -5,29 +5,33 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <section className="bg-[#050510] min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-blob"></div>
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-32 left-1/3 w-96 h-96 bg-cyan-600 rounded-full mix-blend-multiply filter blur-[100px] opacity-20 animate-blob animation-delay-4000"></div>
+      {/* Background Decorative Elements (Optimizado sin filtros pesados de blur) */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-[50vw] h-[50vw] bg-[radial-gradient(circle,rgba(37,99,235,0.08)_0%,transparent_70%)] rounded-full"></div>
+        <div className="absolute bottom-0 right-1/4 w-[40vw] h-[40vw] bg-[radial-gradient(circle,rgba(147,51,234,0.08)_0%,transparent_70%)] rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[radial-gradient(circle,rgba(6,182,212,0.05)_0%,transparent_70%)] rounded-full"></div>
       </div>
 
       <div className="max-w-5xl relative z-10 w-full">
         <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12">
           {/* Profile image with Framer Motion */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="flex-shrink-0 transform md:-translate-x-12"
           >
             <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full p-1 group">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-blue-600 to-purple-600 rounded-full animate-spin-slow opacity-70 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-blue-600 to-purple-600 rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+              ></motion.div>
               <div className="absolute inset-1 bg-[#050510] rounded-full"></div>
               <img
                 src={profilePic}
                 alt="Foto de Jonathan Gonzalez"
-                className="relative w-full h-full object-cover rounded-full z-10 border-4 border-transparent"
+                className="relative w-full h-full object-cover rounded-full z-10 border-4 border-[#050510]"
                 style={{ objectPosition: "18% 50%" }}
               />
             </div>
