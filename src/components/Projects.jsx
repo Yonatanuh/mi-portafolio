@@ -151,7 +151,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         className="flex items-center justify-center gap-2 flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]"
                       >
-                        <span>Demo en Vivo</span>
+                        <span>Sitio Web</span>
                         <FaArrowUpRightFromSquare className="text-xs" />
                       </motion.a>
                     )}
