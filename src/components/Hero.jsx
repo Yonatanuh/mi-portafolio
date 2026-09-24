@@ -1,5 +1,5 @@
 import profilePic from "../assets/imagen-perfil/profile.png";
-import { FaGithub, FaLinkedin, FaXTwitter, FaFileArrowDown } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -110,16 +110,6 @@ const Hero = () => {
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-3.5 px-7 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)]"
               >
                 Ver mis proyectos
-              </a>
-              <a
-                href="/cv.pdf"
-                download="CV_Jonathan_Gonzalez.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 bg-gradient-to-r from-blue-600/20 to-purple-600/20 hover:from-blue-600/35 hover:to-purple-600/35 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 hover:text-white font-bold py-3.5 px-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-              >
-                <FaFileArrowDown className="text-lg text-cyan-400" />
-                Descargar CV
               </a>
               <a
                 href="#contacto"
