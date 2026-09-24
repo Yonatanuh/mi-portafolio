@@ -1,65 +1,71 @@
 import { motion } from "framer-motion";
+import { FaGithub, FaArrowUpRightFromSquare, FaShieldHalved } from "react-icons/fa6";
 
 const Projects = () => {
   const misProyectos = [
     {
       id: 0,
       title: "Neo Banco - Fintech",
+      badge: "PROYECTO DESTACADO",
       description:
-        "Plataforma completa de banca digital (Neo Banco). Arquitectura full-stack avanzada con autenticación segura, manejo de divisas, transferencias SWIFT, notificaciones automáticas por correo electrónico y diseño altamente interactivo. Desplegada en la nube.",
+        "Plataforma completa de banca digital full-stack desarrollada con Spring Boot, React y MongoDB. Cuenta con autenticación segura JWT, notificaciones automáticas por correo electrónico, manejo de saldo y tarjetas virtuales con diseño responsivo.",
       technologies: [
         "React",
         "Java Spring Boot",
-        "Python",
         "MongoDB",
         "Tailwind CSS",
         "Docker",
+        "JWT",
       ],
       linkRepo: "https://github.com/Yonatanuh/Neo-banco",
-      linkDemo: "https://frontend-xi-ten-80.vercel.app",
+      linkDemo: "https://neo-banco.vercel.app",
     },
     {
       id: 1,
       title: "Yonild-Apks-Tv",
+      badge: "PLATAFORMA WEB",
       description:
-        "Plataforma web para descargas de APKs. Desarrollo completo abarcando una interfaz dinámica con filtros y un backend robusto con gestión de almacenamiento multimedia en la nube.",
+        "Plataforma web dinámica para catálogo y distribución de aplicaciones Android y Smart TV. Desarrollo integral con interfaz interactiva, filtros dinámicos y almacenamiento multimedia en la nube.",
       technologies: ["React", "Node.js", "Cloudinary", "Tailwind CSS"],
-      linkRepo: "#",
+      linkRepo: "https://github.com/Yonatanuh",
       linkDemo: "https://www.yonild-apks.com/",
     },
     {
       id: 2,
       title: "Farmacia Cyber Amistad",
+      badge: "AUDITORÍA DE SEGURIDAD",
       description:
-        "Caso de estudio enfocado en procesos de negocio y seguridad. Incluye evaluación de controles de ciberseguridad, análisis de riesgos y diagramas de flujo para optimización operativa.",
+        "Caso de estudio enfocado en procesos empresariales y ciberseguridad. Incluye evaluación exhaustiva de controles de seguridad, matriz de análisis de riesgos y planes de contingencia para la continuidad operativa.",
       technologies: [
         "Ciberseguridad",
-        "Diagramas de Flujo",
-        "Análisis de Riesgos",
+        "Matriz de Riesgos",
+        "Auditoría de Procesos",
+        "Análisis Preventivo",
       ],
-      linkRepo: "#",
-      linkDemo: "#",
+      isCaseStudy: true,
+      caseStudyTag: "Caso de Estudio Confidencial",
     },
     {
       id: 3,
       title: "Evaluación ANUNCIART",
+      badge: "GESTIÓN DE RIESGOS",
       description:
-        "Creación de matriz de evaluación de riesgos corporativos. Análisis detallado de probabilidad e impacto para proteger la infraestructura tecnológica del negocio.",
-      technologies: ["Análisis de Vulnerabilidades", "Documentación"],
-      linkRepo: "#",
-      linkDemo: "#",
+        "Desarrollo e implementación de matriz de evaluación de riesgos corporativos. Análisis cualitativo y cuantitativo de probabilidad e impacto para blindar la infraestructura tecnológica del negocio.",
+      technologies: ["Análisis de Vulnerabilidades", "Evaluación de Impacto", "Documentación Técnica"],
+      isCaseStudy: true,
+      caseStudyTag: "Auditoría de Infraestructura",
     },
   ];
 
   return (
     <section
       id="proyectos"
-      className="bg-gray-800 py-20 px-4 relative overflow-hidden"
+      className="bg-[#050510] py-24 px-4 relative overflow-hidden"
     >
-      {/* Background decoration optimizado */}
+      {/* Background decoration */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.05)_0%,transparent_70%)] rounded-full"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(168,85,247,0.05)_0%,transparent_70%)] rounded-full"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(6,182,212,0.06)_0%,transparent_70%)] rounded-full"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.06)_0%,transparent_70%)] rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -70,38 +76,37 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mb-4 tracking-tight">
             Mis Proyectos Destacados
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Soluciones tecnológicas reales que demuestran mi capacidad para
-            resolver problemas complejos usando arquitecturas modernas.
+            Soluciones tecnológicas reales que demuestran mi capacidad para resolver problemas complejos con arquitecturas seguras y modernas.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {misProyectos.map((proyecto, index) => (
             <motion.div
               key={proyecto.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ y: -10 }}
-              className="bg-gray-900/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] group flex flex-col h-full"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="bg-gray-900/60 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] group flex flex-col h-full"
             >
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+              <div className="flex justify-between items-start mb-4 gap-2">
+                <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
                   {proyecto.title}
                 </h3>
-                {proyecto.id === 0 && (
-                  <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
-                    NUEVO
+                {proyecto.badge && (
+                  <span className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shrink-0">
+                    {proyecto.badge}
                   </span>
                 )}
               </div>
 
-              <p className="text-gray-400 mb-6 leading-relaxed flex-grow">
+              <p className="text-gray-400 mb-6 leading-relaxed flex-grow text-sm md:text-base">
                 {proyecto.description}
               </p>
 
@@ -109,40 +114,49 @@ const Projects = () => {
                 {proyecto.technologies.map((tech, i) => (
                   <span
                     key={i}
-                    className="bg-gray-800 text-blue-300 text-sm font-medium px-3 py-1 rounded-full border border-blue-900/50 group-hover:border-blue-500/30 transition-colors"
+                    className="bg-black/40 text-cyan-200/90 text-xs font-medium px-3 py-1.5 rounded-lg border border-white/5 group-hover:border-cyan-500/20 transition-colors"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
 
-              <div className="flex gap-4 border-t border-gray-700/50 pt-5 mt-auto">
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={proyecto.linkRepo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center flex-1 bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors border border-gray-600 hover:border-gray-500"
-                >
-                  <span className="mr-2">💻</span>
-                  Código
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href={proyecto.linkDemo}
-                  target={proyecto.linkDemo !== "#" ? "_blank" : "_self"}
-                  rel="noopener noreferrer"
-                  className={`flex items-center justify-center flex-1 font-medium py-2 px-4 rounded-lg transition-colors ${
-                    proyecto.linkDemo !== "#"
-                      ? "bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/20"
-                      : "bg-gray-800 text-gray-500 cursor-not-allowed"
-                  }`}
-                >
-                  <span className="mr-2">🚀</span>
-                  Ver página
-                </motion.a>
+              <div className="flex gap-3 border-t border-white/10 pt-5 mt-auto items-center">
+                {proyecto.isCaseStudy ? (
+                  <div className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-cyan-950/20 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
+                    <FaShieldHalved className="text-cyan-400 text-sm" />
+                    <span>{proyecto.caseStudyTag || "Caso de Estudio Confidencial"}</span>
+                  </div>
+                ) : (
+                  <>
+                    {proyecto.linkRepo && (
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href={proyecto.linkRepo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 flex-1 bg-gray-800/80 hover:bg-gray-700 text-white text-sm font-medium py-3 px-4 rounded-xl transition-all border border-gray-700 hover:border-cyan-500/40"
+                      >
+                        <FaGithub className="text-base" />
+                        <span>Código</span>
+                      </motion.a>
+                    )}
+                    {proyecto.linkDemo && (
+                      <motion.a
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        href={proyecto.linkDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]"
+                      >
+                        <span>Demo en Vivo</span>
+                        <FaArrowUpRightFromSquare className="text-xs" />
+                      </motion.a>
+                    )}
+                  </>
+                )}
               </div>
             </motion.div>
           ))}
