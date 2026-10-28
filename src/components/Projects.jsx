@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FaArrowUpRightFromSquare, FaGithub, FaShieldHalved } from "react-icons/fa6";
 
 const projects = [
@@ -12,8 +13,8 @@ const projects = [
   {
     number: "02", title: "Neo Banco", type: "Fintech full-stack", lead: "Una experiencia bancaria que prioriza claridad, seguridad y respuesta inmediata.", description: "Producto digital para administrar saldo, tarjetas virtuales y movimientos con autenticación JWT y notificaciones automáticas.", contributions: ["Flujo de autenticación y autorización", "API REST con Spring Boot", "Diseño adaptable para operaciones diarias"], stack: ["React", "Spring Boot", "MongoDB", "Docker", "JWT"], repo: "https://github.com/Yonatanuh/Neo-banco", demo: "https://neo-banco.vercel.app", accent: "blue",
     gallery: [
-      { src: "/projects/neo-dashboard.png", alt: "Dashboard principal de Neo Banco con tarjeta virtual y resumen financiero", label: "Dashboard bancario" },
-      { src: "/projects/neo-asistente.png", alt: "Asistente financiero integrado de Neo Banco", label: "Asistente Neo" },
+      { src: "/projects/neo-dashboard-public.png", alt: "Dashboard principal de Neo Banco con datos de tarjeta ocultos", label: "Dashboard bancario" },
+      { src: "/projects/neo-asistente-public.png", alt: "Asistente financiero integrado de Neo Banco con datos de tarjeta ocultos", label: "Asistente Neo" },
       { src: "/projects/neo-banco.jpg", alt: "Acceso seguro de la aplicación Neo Banco", label: "Acceso seguro" },
     ],
   },
@@ -25,6 +26,32 @@ const projects = [
     ],
   },
 ];
+
+function ProjectGallery({ project, index }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeShot = project.gallery[activeIndex];
+
+  return (
+    <div className={`project-stage project-stage--${project.accent} ${index % 2 ? "lg:order-1" : ""}`}>
+      <div className="project-stage__topline"><span>Producto real · {project.number}</span><span>{project.gallery.length} vistas</span></div>
+      <div className="project-gallery">
+        <figure className="project-gallery__featured">
+          <div className="real-project-shot__bar"><span /><span /><span /><p>{project.demo.replace("https://", "")}</p></div>
+          <img key={activeShot.src} src={activeShot.src} alt={activeShot.alt} width="1920" height="1080" loading="lazy" />
+          <figcaption><span>{String(activeIndex + 1).padStart(2, "0")} / {String(project.gallery.length).padStart(2, "0")} · {activeShot.label}</span><a href={activeShot.src} target="_blank" rel="noreferrer" aria-label={`Ver captura completa: ${activeShot.label}`}>Ver captura completa <FaArrowUpRightFromSquare aria-hidden="true" /></a></figcaption>
+        </figure>
+        <div className="project-gallery__thumbs" aria-label={`Vistas de ${project.title}`}>
+          {project.gallery.map((shot, shotIndex) => (
+            <button key={shot.src} type="button" className={`project-gallery__thumb ${activeIndex === shotIndex ? "project-gallery__thumb--active" : ""}`} onClick={() => setActiveIndex(shotIndex)} aria-pressed={activeIndex === shotIndex} aria-label={`Mostrar ${shot.label}`}>
+              <img src={shot.src} alt="" width="320" height="180" loading="lazy" />
+              <span><b>{String(shotIndex + 1).padStart(2, "0")}</b>{shot.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const Projects = () => (
   <section id="proyectos" className="section-shell bg-[#f2f3ed] text-[#07111f]">
@@ -49,18 +76,7 @@ const Projects = () => (
                   {project.access && <p className="mt-6 font-mono text-xs text-[#59697a]"><b className="font-sans text-[#26384a]">Acceso demo</b> · {project.access}</p>}
                   <div className="mt-8 flex flex-wrap gap-3"><a href={project.demo} target="_blank" rel="noreferrer" className="project-link">Explorar producto <FaArrowUpRightFromSquare aria-hidden="true" /></a><a href={project.repo} target="_blank" rel="noreferrer" className="project-link project-link--muted"><FaGithub aria-hidden="true" /> Repositorio</a></div>
                 </div>
-                <div className={`project-stage project-stage--${project.accent} ${index % 2 ? "lg:order-1" : ""}`}>
-                  <div className="project-stage__label">Producto real · 0{index + 1}</div>
-                  <div className="project-gallery">
-                    {project.gallery.map((shot, shotIndex) => (
-                      <figure key={shot.src} className={`real-project-shot ${shotIndex === 0 ? "real-project-shot--featured" : ""}`}>
-                        <div className="real-project-shot__bar"><span /><span /><span /><p>{project.demo.replace("https://", "")}</p></div>
-                        <img src={shot.src} alt={shot.alt} width="1920" height="1080" loading="lazy" />
-                        <figcaption>{String(shotIndex + 1).padStart(2, "0")} · {shot.label}</figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                </div>
+                <ProjectGallery project={project} index={index} />
               </div>
             </article>
           );
