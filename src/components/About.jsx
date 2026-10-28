@@ -1,73 +1,23 @@
-const About = () => {
-  return (
-    <section id="sobre-mi" className="bg-[#050510] py-24 px-4 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute top-1/2 left-0 w-[45vw] h-[45vw] bg-[radial-gradient(circle,rgba(6,182,212,0.04)_0%,transparent_70%)] rounded-full"></div>
+import { FaCode, FaLayerGroup, FaShieldHalved } from "react-icons/fa6";
+
+const pillars = [
+  { icon: FaCode, title: "Desarrollo integral", text: "Interfaces, APIs y datos pensados como un solo producto coherente." },
+  { icon: FaShieldHalved, title: "Seguridad desde el inicio", text: "Autenticación, permisos y validaciones integrados en la arquitectura." },
+  { icon: FaLayerGroup, title: "Sistemas que pueden crecer", text: "Código modular, mantenible y preparado para evolucionar con el negocio." },
+];
+
+const About = () => (
+  <section id="sobre-mi" className="section-shell bg-[#f2f3ed] text-[#07111f]">
+    <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
+      <div className="grid gap-12 lg:grid-cols-[.75fr_1.25fr] lg:gap-24">
+        <div><p className="section-kicker section-kicker--dark">01 · Perfil</p><h2 className="section-title section-title--dark mt-5">Pensamiento técnico con visión de producto.</h2></div>
+        <div><p className="text-2xl font-medium leading-[1.45] tracking-[-0.025em] text-[#26384a] sm:text-3xl">Conecto las necesidades del negocio con decisiones técnicas claras para entregar experiencias rápidas, seguras y fáciles de usar.</p><p className="mt-6 max-w-3xl text-base leading-7 text-[#607083]">Mi experiencia combina React, Java Spring Boot, Node.js, Python y bases de datos modernas. Me interesa especialmente el punto donde una buena arquitectura se convierte en una experiencia simple para las personas.</p></div>
       </div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mb-4 tracking-tight">
-            Sobre Mí
-          </h2>
-          <p className="text-gray-400 text-lg max-w-xl mx-auto">
-            Pasión por la ingeniería de software, arquitectura limpia y seguridad digital.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          <div className="bg-gray-900/60 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-center space-y-5">
-            <h3 className="text-2xl font-bold text-cyan-400 flex items-center gap-3">
-              <span>🚀</span> Mi Trayectoria
-            </h3>
-            <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-              Soy un desarrollador de software enfocado en crear soluciones tecnológicas robustas. Con formación integral en desarrollo full-stack (React, Java Spring Boot, Python) y especial énfasis en ciberseguridad, diseño aplicaciones resilientes, seguras y de alto rendimiento.
-            </p>
-            <p className="text-gray-400 text-base leading-relaxed">
-              Mi objetivo es traducir requerimientos complejos de negocio en productos digitales intuitivos, escalables y protegidos con las mejores prácticas de la industria.
-            </p>
-          </div>
-
-          <div className="bg-gray-900/60 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 shadow-xl flex flex-col justify-center space-y-6">
-            <h3 className="text-2xl font-bold text-cyan-400 flex items-center gap-3">
-              <span>🛡️</span> Principios de Ingeniería
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <span className="text-cyan-400 text-xl mr-3 font-bold">✓</span>
-                <div>
-                  <span className="text-white font-semibold block">Seguridad por Diseño (Security-First)</span>
-                  <span className="text-gray-400 text-sm">Validación estricta, prevención OWASP y control de acceso robusto.</span>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-cyan-400 text-xl mr-3 font-bold">✓</span>
-                <div>
-                  <span className="text-white font-semibold block">Arquitectura Limpia & Modular</span>
-                  <span className="text-gray-400 text-sm">Código desacoplado, mantenible y testeable a largo plazo.</span>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-cyan-400 text-xl mr-3 font-bold">✓</span>
-                <div>
-                  <span className="text-white font-semibold block">Experiencia de Usuario Fluida</span>
-                  <span className="text-gray-400 text-sm">Interfaces ultra-responsivas con 60 FPS y rendimiento optimizado.</span>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <span className="text-cyan-400 text-xl mr-3 font-bold">✓</span>
-                <div>
-                  <span className="text-white font-semibold block">Evolución Continua</span>
-                  <span className="text-gray-400 text-sm">Adopción constante de tecnologías de vanguardia y metodologías ágiles.</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-[#d3d8d4] bg-[#d3d8d4] md:grid-cols-3">
+        {pillars.map(({ icon: Icon, title, text }, index) => <article key={title} className="bg-[#f8f9f4] p-7 sm:p-9"><div className="flex items-center justify-between"><Icon className="text-xl text-[#3151c6]" aria-hidden="true" /><span className="font-mono text-xs text-[#8793a0]">0{index + 1}</span></div><h3 className="mt-12 text-xl font-bold tracking-[-0.025em]">{title}</h3><p className="mt-3 leading-7 text-[#667587]">{text}</p></article>)}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default About;

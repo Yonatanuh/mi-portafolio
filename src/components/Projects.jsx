@@ -1,199 +1,47 @@
-import { motion } from "framer-motion";
-import { FaGithub, FaArrowUpRightFromSquare, FaShieldHalved } from "react-icons/fa6";
+import { FaArrowUpRightFromSquare, FaGithub, FaShieldHalved } from "react-icons/fa6";
 
-const Projects = () => {
-  const misProyectos = [
-    {
-      id: 0,
-      title: "WhatsApp Gateway & Cobranzas",
-      badge: "SISTEMA FULL-STACK & EN VIVO",
-      description:
-        "Sistema empresarial para automatización de mensajería masiva y gestión de cobros con WhatsApp Web. Desarrollado con Node.js, Express y React, incluye consola en tiempo real vía WebSockets, sistema de roles RBAC de 3 niveles (Admin, Cliente, Demo interactiva), programación de cron jobs y base de datos distribuida en MongoDB Atlas con cifrado de seguridad.",
-      technologies: [
-        "React",
-        "Node.js",
-        "Express",
-        "Socket.IO",
-        "WhatsApp-Web.js",
-        "MongoDB Atlas",
-        "Puppeteer",
-        "Tailwind CSS",
-      ],
-      linkRepo: "https://github.com/Yonatanuh/bot-whatsapp-mensajes-automatico",
-      linkDemo: "https://bot-whatsapp-mensajes-automatico.vercel.app",
-      demoAccess: "demo@ventas.com / demo123",
-    },
-    {
-      id: 1,
-      title: "Neo Banco - Fintech",
-      badge: "PROYECTO DESTACADO",
-      description:
-        "Plataforma completa de banca digital full-stack desarrollada con Spring Boot, React y MongoDB. Cuenta con autenticación segura JWT, notificaciones automáticas por correo electrónico, manejo de saldo y tarjetas virtuales con diseño responsivo.",
-      technologies: [
-        "React",
-        "Java Spring Boot",
-        "MongoDB",
-        "Tailwind CSS",
-        "Docker",
-        "JWT",
-      ],
-      linkRepo: "https://github.com/Yonatanuh/Neo-banco",
-      linkDemo: "https://neo-banco.vercel.app",
-    },
-    {
-      id: 2,
-      title: "Yonild-Apks-Tv",
-      badge: "PLATAFORMA WEB",
-      description:
-        "Plataforma web dinámica para catálogo y distribución de aplicaciones Android y Smart TV. Desarrollo integral con interfaz interactiva, filtros dinámicos y almacenamiento multimedia en la nube.",
-      technologies: ["React", "Node.js", "Cloudinary", "Tailwind CSS"],
-      linkRepo: "https://github.com/Yonatanuh",
-      linkDemo: "https://www.yonild-apks.com/",
-    },
-    {
-      id: 3,
-      title: "Farmacia Cyber Amistad",
-      badge: "AUDITORÍA DE SEGURIDAD",
-      description:
-        "Caso de estudio enfocado en procesos empresariales y ciberseguridad. Incluye evaluación exhaustiva de controles de seguridad, matriz de análisis de riesgos y planes de contingencia para la continuidad operativa.",
-      technologies: [
-        "Ciberseguridad",
-        "Matriz de Riesgos",
-        "Auditoría de Procesos",
-        "Análisis Preventivo",
-      ],
-      isCaseStudy: true,
-      caseStudyTag: "Caso de Estudio Confidencial",
-    },
-    {
-      id: 4,
-      title: "Evaluación ANUNCIART",
-      badge: "GESTIÓN DE RIESGOS",
-      description:
-        "Desarrollo e implementación de matriz de evaluación de riesgos corporativos. Análisis cualitativo y cuantitativo de probabilidad e impacto para blindar la infraestructura tecnológica del negocio.",
-      technologies: ["Análisis de Vulnerabilidades", "Evaluación de Impacto", "Documentación Técnica"],
-      isCaseStudy: true,
-      caseStudyTag: "Auditoría de Infraestructura",
-    },
-  ];
+const projects = [
+  { number: "01", title: "WhatsApp Gateway & Cobranzas", type: "Automatización empresarial", lead: "Una operación de mensajería compleja convertida en un centro de control claro y seguro.", description: "Arquitectura full-stack para campañas, cobros y seguimiento en tiempo real. Incluye perfiles RBAC, tareas programadas y persistencia distribuida.", contributions: ["Consola en tiempo real con WebSockets", "Roles Admin, Cliente y Demo", "Procesamiento programado y trazabilidad"], stack: ["React", "Node.js", "Socket.IO", "MongoDB", "Puppeteer"], repo: "https://github.com/Yonatanuh/bot-whatsapp-mensajes-automatico", demo: "https://bot-whatsapp-mensajes-automatico.vercel.app", access: "demo@ventas.com · demo123", image: "/projects/whatsapp-gateway.jpg", imageAlt: "Pantalla real de acceso de WhatsApp Gateway y Cobranzas", accent: "lime" },
+  { number: "02", title: "Neo Banco", type: "Fintech full-stack", lead: "Una experiencia bancaria que prioriza claridad, seguridad y respuesta inmediata.", description: "Producto digital para administrar saldo, tarjetas virtuales y movimientos con autenticación JWT y notificaciones automáticas.", contributions: ["Flujo de autenticación y autorización", "API REST con Spring Boot", "Diseño adaptable para operaciones diarias"], stack: ["React", "Spring Boot", "MongoDB", "Docker", "JWT"], repo: "https://github.com/Yonatanuh/Neo-banco", demo: "https://neo-banco.vercel.app", image: "/projects/neo-banco.jpg", imageAlt: "Pantalla real de acceso de la aplicación Neo Banco", accent: "blue" },
+  { number: "03", title: "Yonild APKS TV", type: "Plataforma multimedia", lead: "Descubrimiento de contenido pensado para pantallas, categorías y navegación rápida.", description: "Catálogo dinámico para aplicaciones Android y Smart TV, con filtros, gestión de contenido y almacenamiento multimedia en la nube.", contributions: ["Exploración y filtros dinámicos", "Gestión integral del catálogo", "Activos multimedia con Cloudinary"], stack: ["React", "Node.js", "Cloudinary", "Tailwind CSS"], repo: "https://github.com/Yonatanuh", demo: "https://www.yonild-apks.com/", image: "/projects/yonild-apks.jpg", imageAlt: "Catálogo real de aplicaciones de Yonild APKS TV", accent: "violet" },
+];
 
-  return (
-    <section
-      id="proyectos"
-      className="bg-[#050510] py-24 px-4 relative overflow-hidden"
-    >
-      {/* Background decoration */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(6,182,212,0.06)_0%,transparent_70%)] rounded-full"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(59,130,246,0.06)_0%,transparent_70%)] rounded-full"></div>
+const Projects = () => (
+  <section id="proyectos" className="section-shell bg-[#f2f3ed] text-[#07111f]">
+    <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
+      <div className="grid gap-8 border-b border-[#cfd6d0] pb-12 lg:grid-cols-[1fr_.6fr] lg:items-end">
+        <div><p className="section-kicker section-kicker--dark">03 · Trabajo seleccionado</p><h2 className="section-title section-title--dark mt-5">No solo código.<br />Productos con intención.</h2></div>
+        <p className="max-w-md text-lg leading-8 text-[#627183] lg:justify-self-end">Una selección de soluciones donde estrategia, experiencia de usuario y arquitectura trabajan juntas.</p>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 mb-4 tracking-tight">
-            Mis Proyectos Destacados
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Soluciones tecnológicas reales que demuestran mi capacidad para resolver problemas complejos con arquitecturas seguras y modernas.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {misProyectos.map((proyecto, index) => (
-            <motion.div
-              key={proyecto.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="bg-gray-900/60 backdrop-blur-md rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] group flex flex-col h-full"
-            >
-              <div className="flex justify-between items-start mb-4 gap-2">
-                <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                  {proyecto.title}
-                </h3>
-                {proyecto.badge && (
-                  <span className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shrink-0">
-                    {proyecto.badge}
-                  </span>
-                )}
-              </div>
-
-              <p className="text-gray-400 mb-6 leading-relaxed flex-grow text-sm md:text-base">
-                {proyecto.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {proyecto.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="bg-black/40 text-cyan-200/90 text-xs font-medium px-3 py-1.5 rounded-lg border border-white/5 group-hover:border-cyan-500/20 transition-colors"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {proyecto.demoAccess && (
-                <div className="mb-6 px-3.5 py-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-gray-300 flex items-center justify-between">
-                  <span className="text-cyan-400 font-semibold flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                    Acceso Demo:
-                  </span>
-                  <span className="font-mono text-cyan-200 font-medium">{proyecto.demoAccess}</span>
+      <div className="divide-y divide-[#cfd6d0]">
+        {projects.map((project, index) => {
+          return (
+            <article key={project.title} className="case-study py-16 lg:py-24">
+              <div className="grid items-center gap-12 lg:grid-cols-[.82fr_1.18fr] lg:gap-16">
+                <div className={index % 2 ? "lg:order-2" : ""}>
+                  <div className="flex items-center gap-4"><span className="font-mono text-sm font-bold text-[#3151c6]">{project.number}</span><span className="h-px w-9 bg-[#aeb9b1]" /><span className="text-xs font-black uppercase tracking-[.14em] text-[#607083]">{project.type}</span></div>
+                  <h3 className="mt-7 text-[clamp(2.6rem,5vw,4.7rem)] font-black leading-[.95] tracking-[-.06em]">{project.title}</h3>
+                  <p className="mt-6 text-xl font-semibold leading-8 tracking-[-.02em] text-[#304255]">{project.lead}</p>
+                  <p className="mt-4 leading-7 text-[#6b7888]">{project.description}</p>
+                  <ul className="mt-7 space-y-3">{project.contributions.map((item) => <li key={item} className="case-point"><span>↳</span>{item}</li>)}</ul>
+                  <ul className="mt-7 flex flex-wrap gap-2" aria-label={`Tecnologías de ${project.title}`}>{project.stack.map((tech) => <li key={tech} className="project-tech">{tech}</li>)}</ul>
+                  {project.access && <p className="mt-6 font-mono text-xs text-[#59697a]"><b className="font-sans text-[#26384a]">Acceso demo</b> · {project.access}</p>}
+                  <div className="mt-8 flex flex-wrap gap-3"><a href={project.demo} target="_blank" rel="noreferrer" className="project-link">Explorar producto <FaArrowUpRightFromSquare aria-hidden="true" /></a><a href={project.repo} target="_blank" rel="noreferrer" className="project-link project-link--muted"><FaGithub aria-hidden="true" /> Repositorio</a></div>
                 </div>
-              )}
-
-              <div className="flex gap-3 border-t border-white/10 pt-5 mt-auto items-center">
-                {proyecto.isCaseStudy ? (
-                  <div className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-cyan-950/20 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
-                    <FaShieldHalved className="text-cyan-400 text-sm" />
-                    <span>{proyecto.caseStudyTag || "Caso de Estudio Confidencial"}</span>
-                  </div>
-                ) : (
-                  <>
-                    {proyecto.linkRepo && (
-                      <motion.a
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        href={proyecto.linkRepo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 flex-1 bg-gray-800/80 hover:bg-gray-700 text-white text-sm font-medium py-3 px-4 rounded-xl transition-all border border-gray-700 hover:border-cyan-500/40"
-                      >
-                        <FaGithub className="text-base" />
-                        <span>Código</span>
-                      </motion.a>
-                    )}
-                    {proyecto.linkDemo && (
-                      <motion.a
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        href={proyecto.linkDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 flex-1 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-bold py-3 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]"
-                      >
-                        <span>Sitio Web</span>
-                        <FaArrowUpRightFromSquare className="text-xs" />
-                      </motion.a>
-                    )}
-                  </>
-                )}
+                <div className={`project-stage project-stage--${project.accent} ${index % 2 ? "lg:order-1" : ""}`}>
+                  <div className="project-stage__label">Producto real · 0{index + 1}</div>
+                  <div className="real-project-shot"><div className="real-project-shot__bar"><span /><span /><span /><p>{project.demo.replace("https://", "")}</p></div><img src={project.image} alt={project.imageAlt} width="1440" height="1080" loading="lazy" /></div>
+                </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </article>
+          );
+        })}
       </div>
-    </section>
-  );
-};
+
+      <div className="security-note"><FaShieldHalved aria-hidden="true" /><div><p className="text-xs font-black uppercase tracking-[.15em] text-[#c7f464]">Trabajo de ciberseguridad</p><h3 className="mt-2 text-2xl font-bold text-white">Auditorías y matrices de riesgo</h3><p className="mt-2 max-w-2xl text-[#aebed0]">Evaluaciones para Farmacia Cyber Amistad y ANUNCIART, con análisis de controles, probabilidad, impacto y continuidad operativa.</p></div><span className="ml-auto hidden font-mono text-xs text-[#788da4] md:block">DOCUMENTACIÓN CONFIDENCIAL</span></div>
+    </div>
+  </section>
+);
 
 export default Projects;

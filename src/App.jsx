@@ -1,169 +1,60 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FaArrowUp, FaBars, FaXmark } from "react-icons/fa6";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 
+const navItems = [["sobre-mi", "Perfil"], ["habilidades", "Experiencia"], ["proyectos", "Proyectos"]];
+
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    const onKeyDown = (event) => event.key === "Escape" && setIsMenuOpen(false);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("keydown", onKeyDown);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[#050510] text-white font-sans selection:bg-cyan-500 selection:text-black">
-      {/* Navigation */}
-      <nav
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-[#050510]/85 backdrop-blur-md border-b border-white/10 shadow-2xl py-3"
-            : "bg-transparent py-5"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo de Marca Personal */}
-            <div className="shrink-0">
-              <a
-                href="#"
-                className="text-2xl md:text-3xl font-extrabold text-white tracking-tight ml-2 md:ml-4 transition-transform hover:scale-105 flex items-center group"
-              >
-                <span className="text-cyan-400 font-mono mr-1 group-hover:-translate-x-0.5 transition-transform">&lt;</span>
-                Jonathan
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-                  .dev
-                </span>
-                <span className="text-cyan-400 font-mono ml-1 group-hover:translate-x-0.5 transition-transform">/&gt;</span>
-              </a>
-            </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-center space-x-6">
-                <button
-                  onClick={() => scrollToSection("sobre-mi")}
-                  className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer"
-                >
-                  Sobre Mí
-                </button>
-                <button
-                  onClick={() => scrollToSection("habilidades")}
-                  className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer"
-                >
-                  Habilidades
-                </button>
-                <button
-                  onClick={() => scrollToSection("proyectos")}
-                  className="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer"
-                >
-                  Proyectos
-                </button>
-                <button
-                  onClick={() => scrollToSection("contacto")}
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-all duration-300 transform hover:-translate-y-0.5 shadow-[0_0_15px_rgba(6,182,212,0.3)] cursor-pointer"
-                >
-                  Contacto
-                </button>
-              </div>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-300 hover:text-white p-2 rounded-lg border border-white/10"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  {isMenuOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </svg>
-              </button>
-            </div>
+    <div className="min-h-screen overflow-x-hidden bg-[#07111f] text-[#f4f5ef] selection:bg-[#c7f464] selection:text-[#07111f]">
+      <a href="#contenido" className="skip-link">Saltar al contenido</a>
+      <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
+        <nav className="mx-auto flex h-[72px] max-w-[1240px] items-center justify-between px-5 sm:px-8" aria-label="Navegación principal">
+          <a href="#inicio" className="group flex items-center gap-3" aria-label="Ir al inicio">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-[#c7f464] text-sm font-black text-[#07111f] transition-transform group-hover:rotate-6">JG</span>
+            <span className="text-sm font-semibold tracking-[-0.02em] text-white">Jonathan González</span>
+          </a>
+          <div className="hidden items-center gap-8 md:flex">
+            {navItems.map(([id, label]) => <a key={id} href={`#${id}`} className="nav-link">{label}</a>)}
+            <a href="#contacto" className="button button--small">Hablemos</a>
+          </div>
+          <button type="button" className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-lg text-white md:hidden" aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"} aria-expanded={isMenuOpen} aria-controls="mobile-menu" onClick={() => setIsMenuOpen((value) => !value)}>
+            {isMenuOpen ? <FaXmark /> : <FaBars />}
+          </button>
+        </nav>
+        <div id="mobile-menu" className={`mobile-menu ${isMenuOpen ? "mobile-menu--open" : ""}`}>
+          <div className="flex flex-col gap-2 px-5 pb-6 pt-2">
+            {navItems.map(([id, label]) => <a key={id} href={`#${id}`} onClick={() => setIsMenuOpen(false)} className="mobile-menu__link">{label}</a>)}
+            <a href="#contacto" onClick={() => setIsMenuOpen(false)} className="button mt-2 justify-center">Hablemos</a>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-[#0a0a1a] border-b border-white/10 px-4 pt-3 pb-5 space-y-2 mt-2">
-            <button
-              onClick={() => scrollToSection("sobre-mi")}
-              className="text-gray-300 hover:text-cyan-400 block px-3 py-2.5 rounded-lg text-base font-medium w-full text-left"
-            >
-              Sobre Mí
-            </button>
-            <button
-              onClick={() => scrollToSection("habilidades")}
-              className="text-gray-300 hover:text-cyan-400 block px-3 py-2.5 rounded-lg text-base font-medium w-full text-left"
-            >
-              Habilidades
-            </button>
-            <button
-              onClick={() => scrollToSection("proyectos")}
-              className="text-gray-300 hover:text-cyan-400 block px-3 py-2.5 rounded-lg text-base font-medium w-full text-left"
-            >
-              Proyectos
-            </button>
-            <button
-              onClick={() => scrollToSection("contacto")}
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold block px-3 py-2.5 rounded-xl text-base w-full text-center mt-3"
-            >
-              Contacto
-            </button>
-          </div>
-        )}
-      </nav>
+      <main id="contenido"><Hero /><About /><Skills /><Projects /><Contact /></main>
 
-      {/* Main Content */}
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-[#03030a] py-12 px-4 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center space-y-2">
-          <p className="text-gray-300 font-medium">
-            © {new Date().getFullYear()} Jonathan Gonzalez. Todos los derechos reservados.
-          </p>
-          <p className="text-gray-500 text-sm">
-            Diseñado y desarrollado con React, Tailwind CSS y Framer Motion.
-          </p>
+      <footer className="border-t border-white/10 bg-[#050c16]">
+        <div className="mx-auto flex max-w-[1240px] flex-col gap-5 px-5 py-8 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+          <p>© {new Date().getFullYear()} Jonathan González. Desarrollo de producto digital.</p>
+          <a href="#inicio" className="inline-flex items-center gap-2 text-white transition-colors hover:text-[#c7f464]">Volver arriba <FaArrowUp aria-hidden="true" /></a>
         </div>
       </footer>
     </div>
