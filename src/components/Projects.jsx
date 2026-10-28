@@ -1,9 +1,29 @@
 import { FaArrowUpRightFromSquare, FaGithub, FaShieldHalved } from "react-icons/fa6";
 
 const projects = [
-  { number: "01", title: "WhatsApp Gateway & Cobranzas", type: "Automatización empresarial", lead: "Una operación de mensajería compleja convertida en un centro de control claro y seguro.", description: "Arquitectura full-stack para campañas, cobros y seguimiento en tiempo real. Incluye perfiles RBAC, tareas programadas y persistencia distribuida.", contributions: ["Consola en tiempo real con WebSockets", "Roles Admin, Cliente y Demo", "Procesamiento programado y trazabilidad"], stack: ["React", "Node.js", "Socket.IO", "MongoDB", "Puppeteer"], repo: "https://github.com/Yonatanuh/bot-whatsapp-mensajes-automatico", demo: "https://bot-whatsapp-mensajes-automatico.vercel.app", access: "demo@ventas.com · demo123", image: "/projects/whatsapp-gateway.jpg", imageAlt: "Pantalla real de acceso de WhatsApp Gateway y Cobranzas", accent: "lime" },
-  { number: "02", title: "Neo Banco", type: "Fintech full-stack", lead: "Una experiencia bancaria que prioriza claridad, seguridad y respuesta inmediata.", description: "Producto digital para administrar saldo, tarjetas virtuales y movimientos con autenticación JWT y notificaciones automáticas.", contributions: ["Flujo de autenticación y autorización", "API REST con Spring Boot", "Diseño adaptable para operaciones diarias"], stack: ["React", "Spring Boot", "MongoDB", "Docker", "JWT"], repo: "https://github.com/Yonatanuh/Neo-banco", demo: "https://neo-banco.vercel.app", image: "/projects/neo-banco.jpg", imageAlt: "Pantalla real de acceso de la aplicación Neo Banco", accent: "blue" },
-  { number: "03", title: "Yonild APKS TV", type: "Plataforma multimedia", lead: "Descubrimiento de contenido pensado para pantallas, categorías y navegación rápida.", description: "Catálogo dinámico para aplicaciones Android y Smart TV, con filtros, gestión de contenido y almacenamiento multimedia en la nube.", contributions: ["Exploración y filtros dinámicos", "Gestión integral del catálogo", "Activos multimedia con Cloudinary"], stack: ["React", "Node.js", "Cloudinary", "Tailwind CSS"], repo: "https://github.com/Yonatanuh", demo: "https://www.yonild-apks.com/", image: "/projects/yonild-apks.jpg", imageAlt: "Catálogo real de aplicaciones de Yonild APKS TV", accent: "violet" },
+  {
+    number: "01", title: "WhatsApp Gateway & Cobranzas", type: "Automatización empresarial", lead: "Una operación de mensajería compleja convertida en un centro de control claro y seguro.", description: "Arquitectura full-stack para campañas, cobros y seguimiento en tiempo real. Incluye perfiles RBAC, tareas programadas y persistencia distribuida.", contributions: ["Consola en tiempo real con WebSockets", "Roles Admin, Cliente y Demo", "Procesamiento programado y trazabilidad"], stack: ["React", "Node.js", "Socket.IO", "MongoDB", "Puppeteer"], repo: "https://github.com/Yonatanuh/bot-whatsapp-mensajes-automatico", demo: "https://bot-whatsapp-mensajes-automatico.vercel.app", access: "demo@ventas.com · demo123", accent: "lime",
+    gallery: [
+      { src: "/projects/whatsapp-console.png", alt: "Consola de campañas de cobro de WhatsApp Gateway", label: "Consola de envío" },
+      { src: "/projects/whatsapp-clientes.png", alt: "Directorio de clientes de WhatsApp Gateway", label: "Directorio de clientes" },
+      { src: "/projects/whatsapp-configuracion.png", alt: "Configuración y copia de seguridad de WhatsApp Gateway", label: "Configuración segura" },
+    ],
+  },
+  {
+    number: "02", title: "Neo Banco", type: "Fintech full-stack", lead: "Una experiencia bancaria que prioriza claridad, seguridad y respuesta inmediata.", description: "Producto digital para administrar saldo, tarjetas virtuales y movimientos con autenticación JWT y notificaciones automáticas.", contributions: ["Flujo de autenticación y autorización", "API REST con Spring Boot", "Diseño adaptable para operaciones diarias"], stack: ["React", "Spring Boot", "MongoDB", "Docker", "JWT"], repo: "https://github.com/Yonatanuh/Neo-banco", demo: "https://neo-banco.vercel.app", accent: "blue",
+    gallery: [
+      { src: "/projects/neo-dashboard.png", alt: "Dashboard principal de Neo Banco con tarjeta virtual y resumen financiero", label: "Dashboard bancario" },
+      { src: "/projects/neo-asistente.png", alt: "Asistente financiero integrado de Neo Banco", label: "Asistente Neo" },
+      { src: "/projects/neo-banco.jpg", alt: "Acceso seguro de la aplicación Neo Banco", label: "Acceso seguro" },
+    ],
+  },
+  {
+    number: "03", title: "Yonild APKS TV", type: "Plataforma multimedia", lead: "Descubrimiento de contenido pensado para pantallas, categorías y navegación rápida.", description: "Catálogo dinámico para aplicaciones Android y Smart TV, con filtros, gestión de contenido y almacenamiento multimedia en la nube.", contributions: ["Exploración y filtros dinámicos", "Gestión integral del catálogo", "Activos multimedia con Cloudinary"], stack: ["React", "Node.js", "Cloudinary", "Tailwind CSS"], repo: "https://github.com/Yonatanuh", demo: "https://www.yonild-apks.com/", accent: "violet",
+    gallery: [
+      { src: "/projects/yonild-detalle.png", alt: "Ficha de descarga verificada de una aplicación en Yonild APKS TV", label: "Ficha de aplicación" },
+      { src: "/projects/yonild-apks.jpg", alt: "Catálogo real de aplicaciones de Yonild APKS TV", label: "Catálogo multimedia" },
+    ],
+  },
 ];
 
 const Projects = () => (
@@ -31,7 +51,15 @@ const Projects = () => (
                 </div>
                 <div className={`project-stage project-stage--${project.accent} ${index % 2 ? "lg:order-1" : ""}`}>
                   <div className="project-stage__label">Producto real · 0{index + 1}</div>
-                  <div className="real-project-shot"><div className="real-project-shot__bar"><span /><span /><span /><p>{project.demo.replace("https://", "")}</p></div><img src={project.image} alt={project.imageAlt} width="1440" height="1080" loading="lazy" /></div>
+                  <div className="project-gallery">
+                    {project.gallery.map((shot, shotIndex) => (
+                      <figure key={shot.src} className={`real-project-shot ${shotIndex === 0 ? "real-project-shot--featured" : ""}`}>
+                        <div className="real-project-shot__bar"><span /><span /><span /><p>{project.demo.replace("https://", "")}</p></div>
+                        <img src={shot.src} alt={shot.alt} width="1920" height="1080" loading="lazy" />
+                        <figcaption>{String(shotIndex + 1).padStart(2, "0")} · {shot.label}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
                 </div>
               </div>
             </article>
