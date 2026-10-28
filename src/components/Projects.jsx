@@ -5,6 +5,26 @@ const Projects = () => {
   const misProyectos = [
     {
       id: 0,
+      title: "WhatsApp Gateway & Cobranzas",
+      badge: "SISTEMA FULL-STACK & EN VIVO",
+      description:
+        "Sistema empresarial para automatización de mensajería masiva y gestión de cobros con WhatsApp Web. Desarrollado con Node.js, Express y React, incluye consola en tiempo real vía WebSockets, sistema de roles RBAC de 3 niveles (Admin, Cliente, Demo interactiva), programación de cron jobs y base de datos distribuida en MongoDB Atlas con cifrado de seguridad.",
+      technologies: [
+        "React",
+        "Node.js",
+        "Express",
+        "Socket.IO",
+        "WhatsApp-Web.js",
+        "MongoDB Atlas",
+        "Puppeteer",
+        "Tailwind CSS",
+      ],
+      linkRepo: "https://github.com/Yonatanuh/bot-whatsapp-mensajes-automatico",
+      linkDemo: "https://bot-whatsapp-mensajes-automatico.vercel.app",
+      demoAccess: "demo@ventas.com / demo123",
+    },
+    {
+      id: 1,
       title: "Neo Banco - Fintech",
       badge: "PROYECTO DESTACADO",
       description:
@@ -21,7 +41,7 @@ const Projects = () => {
       linkDemo: "https://neo-banco.vercel.app",
     },
     {
-      id: 1,
+      id: 2,
       title: "Yonild-Apks-Tv",
       badge: "PLATAFORMA WEB",
       description:
@@ -31,7 +51,7 @@ const Projects = () => {
       linkDemo: "https://www.yonild-apks.com/",
     },
     {
-      id: 2,
+      id: 3,
       title: "Farmacia Cyber Amistad",
       badge: "AUDITORÍA DE SEGURIDAD",
       description:
@@ -46,7 +66,7 @@ const Projects = () => {
       caseStudyTag: "Caso de Estudio Confidencial",
     },
     {
-      id: 3,
+      id: 4,
       title: "Evaluación ANUNCIART",
       badge: "GESTIÓN DE RIESGOS",
       description:
@@ -120,6 +140,16 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
+
+              {proyecto.demoAccess && (
+                <div className="mb-6 px-3.5 py-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-gray-300 flex items-center justify-between">
+                  <span className="text-cyan-400 font-semibold flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    Acceso Demo:
+                  </span>
+                  <span className="font-mono text-cyan-200 font-medium">{proyecto.demoAccess}</span>
+                </div>
+              )}
 
               <div className="flex gap-3 border-t border-white/10 pt-5 mt-auto items-center">
                 {proyecto.isCaseStudy ? (
