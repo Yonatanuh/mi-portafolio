@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const groups = [
   { number: "01", label: "Frontend", lead: "Interfaces rápidas, accesibles y centradas en el usuario.", items: ["React", "JavaScript", "TypeScript", "Tailwind CSS", "Framer Motion", "HTML / CSS"] },
   { number: "02", label: "Backend", lead: "Servicios robustos y APIs preparadas para producción.", items: ["Java 21", "Spring Boot", "Node.js", "Express", "Python", "C# / .NET", "REST APIs"] },
-  { number: "03", label: "Datos & Cloud", lead: "Persistencia, despliegue y operación con una base sólida.", items: ["PostgreSQL", "MongoDB", "SQL Server", "Docker / contenedores", "CI/CD (básico)", "DevOps (básico)", "Vercel", "Render", "Git / GitHub"] },
+  { number: "03", label: "Datos & Cloud", lead: "Persistencia, despliegue y operación con una base sólida.", items: ["PostgreSQL", "MongoDB", "SQL Server", "Docker / contenedores (intermedio)", "CI/CD (intermedio)", "DevOps (intermedio)", "Vercel", "Render", "Git / GitHub"] },
   { number: "04", label: "Seguridad", lead: "Riesgo y protección tratados como parte del producto.", items: ["JWT / RBAC", "OWASP", "Análisis de riesgos", "Auditoría", "Hardening", "Documentación técnica"] },
 ];
 
